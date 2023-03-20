@@ -11,3 +11,4 @@ Pandas
 
 Known issues:
 URL's without 'http://' throw an error.
+Cannot add the full URL to internal links (yet).

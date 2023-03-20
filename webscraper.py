@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-#Takes a URL, stores the input as a variable called response. Becomes a bs4 object.
+#Takes a URL, stores the input as a variable called response.
 url = input("Please enter the address of the URL you would like to scrape: ")
 response = requests.get(url)
 
@@ -13,7 +13,7 @@ soup = BeautifulSoup(response.text, 'html.parser')
 # create an empty list to store the links and titles
 url_and_titles = []
 
-# find all the links on the page and extract their URLs and titles
+# find all the links on the page and extract their URLs and titles. Appends to the empty list.
 for link in soup.find_all("a"):
     href = link.get("href")
     title = link.get("title") or link.text.strip()
