@@ -2,6 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from urllib.parse import urljoin
 
 #Takes a URL, stores the input as a variable called response. Loads the bs4 html parser.
 url = input("Please enter the address of the URL you would like to scrape: ")
@@ -12,8 +13,11 @@ soup = BeautifulSoup(response.text, 'html.parser')
 url_and_titles = []
 
 # Finds all links on the page and extracts their URLs/ titles. Appends to the empty list.
+# Finds all links on the page and extracts their URLs/ titles. Appends to the empty list.
 for link in soup.find_all("a"):
     href = link.get("href")
+    if href.startswith("/"):
+        href = urljoin(url, href)
     title = link.get("title") or link.text.strip()
     url_and_titles.append({"URL": href, "title": title})
 
