@@ -6,6 +6,9 @@ from urllib.parse import urljoin
 
 #Takes a URL, stores the input as a variable called response. Loads the bs4 html parser.
 url = input("Please enter the address of the URL you would like to scrape: ")
+if not url.startswith("http"):
+    url = "http://" + url
+
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'html.parser')
 
