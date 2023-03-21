@@ -16,7 +16,6 @@ soup = BeautifulSoup(response.text, 'html.parser')
 url_and_titles = []
 
 # Finds all links on the page and extracts their URLs/ titles. Appends to the empty list.
-# Finds all links on the page and extracts their URLs/ titles. Appends to the empty list.
 for link in soup.find_all("a"):
     href = link.get("href")
     if href.startswith("/"):
