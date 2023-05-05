@@ -9,12 +9,6 @@ url = input("Please enter the address of the URL you would like to scrape: ")
 if not url.startswith("http"):
     url = "http://" + url
 
-response = requests.get(url)
-soup = BeautifulSoup(response.text, 'html.parser')
-
-# create an empty list to store the links and titles
-url_and_titles = []
-
 # Finds all links on the page and extracts their URLs/ titles. Appends to the empty list.
 for link in soup.find_all("a"):
     href = link.get("href")
