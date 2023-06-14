@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from urllib.parse import urljoin
 
-#Takes a URL, stores the input as a variable called response. Loads the bs4 html parser.
+#Takes a URL, stores the input as a variable called 'response'. Loads the bs4 html parser.
 url = input("Please enter the address of the URL you would like to scrape: ")
 if not url.startswith("http"):
     url = "http://" + url
@@ -12,10 +12,10 @@ if not url.startswith("http"):
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'html.parser')
 
-# create an empty list to store the links and titles
+#Create an empty list to store the links and titles
 url_and_titles = []
 
-# Finds all links on the page and extracts their URLs/ titles. Appends to the empty list.
+#Finds all links on the page and extracts their URLs/ titles. Appends to the empty list.
 for link in soup.find_all("a"):
     href = link.get("href")
     if href.startswith("/"):
@@ -28,4 +28,4 @@ result = pd.DataFrame(url_and_titles)
 result.to_csv("urls_and_titles.csv", index=False)
 print(result)
 
-#vscode2
+#Testing VS Code Program push/pull requests. Success!
